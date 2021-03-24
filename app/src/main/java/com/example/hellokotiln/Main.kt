@@ -1,27 +1,30 @@
 package com.example.hellokotiln
 
 fun main() {
-    // 코틀린 만의 특별한
+    // java -> Person p1 = new Person()
+    val p1 = Person("name1")        // 이름으로만 생성
+    val p2 = Person("이름1", 33)  // 이름, 나이로 생성
+}
 
-    // if 식 (if 문)
-    val x = 2;
-    val isEven = if (x % 2 == 0) "짝수" else "홀수"
+// 주 생성자
+class Person (){
+    var name: String = "None"
+    var age: Int = -1
 
-    // for-loop
-    for (i in 0..9) {
-        // 0 부터 9 까지 출력
-        println(i)
+    // 부 생성자1
+    constructor(nm: String) : this(){
+        this.name = nm
     }
 
-    // switch문 코틀린에서는 when 문
-    val y = 1
-    // switch 문에 대한 결과값을 상수에 대입 가능
-    val ss = when (x) {
-        1-> println("1")
-        2-> println("2")
-        3, 4, 5 -> println("3, 4, 5임")
-        in 6..20 -> print("6부터 20 사이임")             // in 을 사용해서 해당 범위에 속한다면 실행
-        !in 8..10 -> println("8부터 10이 아님")
-        else -> print("default")
+    // 부 생성자2
+    constructor(name: String, age: Int) : this() {
+        this.name = name
+        this.age = age
+    }
+
+    // 생성자에 의해 객체가 생성된 직후에 실행됨
+    init {
+        println("이름: [$name] 나이: [$age]")
     }
 }
+
